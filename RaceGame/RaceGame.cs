@@ -93,14 +93,24 @@
             {
                 case Keys.Right:
                     {
-                        if (carSpeed != 0 && mainCar.Left <= ClientSize.Width - mainCar.Width)
+                        if (carSpeed != 0 && mainCar.Left <= ClientSize.Width)
+                        {
                             mainCar.Left += sideMoveStep;
+
+                            if (ClientSize.Width - mainCar.Left < mainCar.Width / 2)
+                                mainCar.Left = mainCar.Left - ClientSize.Width;
+                        }
                         break;
                     }
                 case Keys.Left:
                     {
-                        if (carSpeed != 0 && mainCar.Left >= 0)
+                        if (carSpeed != 0 && mainCar.Left >= -mainCar.Width / 2)
+                        {
                             mainCar.Left -= sideMoveStep;
+
+                            if (mainCar.Left < -mainCar.Width / 2)
+                                mainCar.Left = ClientSize.Width - mainCar.Width / 2;
+                        }
                         break;
                     }
                 case Keys.Up:
