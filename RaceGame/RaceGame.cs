@@ -93,13 +93,13 @@
             {
                 case Keys.Right:
                     {
-                        if (carSpeed != 0 && mainCar.Left <= ClientSize.Width)
+                        if (carSpeed != 0 && mainCar.Left <= ClientSize.Width - mainCar.Width)
                             mainCar.Left += sideMoveStep;
                         break;
                     }
                 case Keys.Left:
                     {
-                        if (carSpeed != 0 && mainCar.Left >= -mainCar.Width / 2)
+                        if (carSpeed != 0 && mainCar.Left >= 0)
                             mainCar.Left -= sideMoveStep;
                         break;
                     }
