@@ -189,6 +189,12 @@ namespace Race
                     panelMenu.Show();
                 }
             }
+            SavePlayerResult(playerName, score, coinsCollected, DateTime.Now);
+        }
+
+        private void SavePlayerResult(string playerName, int score, int coinsCollected, DateTime now)
+        {
+            
         }
 
         private void StartMotion()
