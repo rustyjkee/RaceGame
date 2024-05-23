@@ -1,4 +1,7 @@
-﻿namespace Race
+﻿using System.Runtime.InteropServices;
+using System.Windows.Forms;
+
+namespace Race
 {
     public partial class RaceGame : Form
     {
@@ -25,6 +28,8 @@
         private List<PictureBox> menuCars;
         private int carSpeed = 2;
 
+        private bool playerNameTextBoxFirstClicked;
+        private string playerName;
         private void timerRoad_Tick(object sender, EventArgs e)
         {
             if (carSpeed != 0) score++;
@@ -82,8 +87,11 @@
             timerRoad.Stop();
             timerTowardCars.Stop();
             panelMenu.Show();
-        }
 
+            playerNameTextBox.SelectAll();
+            panelMenu.TabIndex = playerNameTextBox.TabIndex;
+
+        }
         private void RaceGame_KeyDown(object sender, KeyEventArgs e)
         {
             int sideMoveStep = 9;
@@ -265,14 +273,40 @@
 
         private void buttonStart_Click(object sender, EventArgs e)
         {
+            if (!IsNameValid(playerNameTextBox.Text))
+            {
+                MessageBox.Show("Please, enter valid name!");
+                return;
+            }
+
+            playerName =  playerNameTextBox.Text == "Enter your name here" ? "unnamed" : playerNameTextBox.Text;
+            
             StartGame();
             panelGame.Show();
             panelMenu.Hide();
         }
 
+        private bool IsNameValid(string name)
+        {
+            if (name.Trim().Length <= 1) 
+                return false;
+            
+            foreach (char c in name)
+                if (!char.IsLetter(c) && !char.IsDigit(c) && !char.IsWhiteSpace(c)) return false;
+            
+            return true;
+        }
+
         private void buttonMenuExit_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void playerNameTextBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (!playerNameTextBoxFirstClicked)
+                playerNameTextBox.Clear();
+            playerNameTextBoxFirstClicked = true;
         }
     }
 }
