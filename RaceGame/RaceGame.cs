@@ -1,7 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Windows.Forms;
-
-namespace Race
+﻿namespace Race
 {
     public partial class RaceGame : Form
     {
@@ -30,6 +27,7 @@ namespace Race
 
         private bool playerNameTextBoxFirstClicked;
         private string playerName;
+
         private void timerRoad_Tick(object sender, EventArgs e)
         {
             if (carSpeed != 0) score++;
@@ -87,10 +85,6 @@ namespace Race
             timerRoad.Stop();
             timerTowardCars.Stop();
             panelMenu.Show();
-
-            playerNameTextBox.SelectAll();
-            panelMenu.TabIndex = playerNameTextBox.TabIndex;
-
         }
         private void RaceGame_KeyDown(object sender, KeyEventArgs e)
         {
@@ -182,6 +176,8 @@ namespace Race
                     labelCoins.Text = "Coins: " + coinsCollected;
 
                     StartMotion();
+
+                    return;
                 }
                 else
                 {
@@ -189,12 +185,8 @@ namespace Race
                     panelMenu.Show();
                 }
             }
-            SavePlayerResult(playerName, score, coinsCollected, DateTime.Now);
-        }
 
-        private void SavePlayerResult(string playerName, int score, int coinsCollected, DateTime now)
-        {
-            
+            GameResultStorage.Save(new GameResult(playerName, score, coinsCollected, DateTime.Now));
         }
 
         private void StartMotion()
@@ -285,8 +277,8 @@ namespace Race
                 return;
             }
 
-            playerName =  playerNameTextBox.Text == "Enter your name here" ? "unnamed" : playerNameTextBox.Text;
-            
+            playerName = playerNameTextBox.Text == "Enter your name here" ? "unnamed" : playerNameTextBox.Text;
+
             StartGame();
             panelGame.Show();
             panelMenu.Hide();
@@ -294,12 +286,12 @@ namespace Race
 
         private bool IsNameValid(string name)
         {
-            if (name.Trim().Length <= 1) 
+            if (name.Trim().Length <= 1)
                 return false;
-            
+
             foreach (char c in name)
                 if (!char.IsLetter(c) && !char.IsDigit(c) && !char.IsWhiteSpace(c)) return false;
-            
+
             return true;
         }
 
@@ -313,6 +305,17 @@ namespace Race
             if (!playerNameTextBoxFirstClicked)
                 playerNameTextBox.Clear();
             playerNameTextBoxFirstClicked = true;
+        }
+
+        private void buttonScores_Click(object sender, EventArgs e)
+        {
+            new ResultsForm().ShowDialog();
+        }
+
+        private void RaceGame_Shown(object sender, EventArgs e)
+        {
+            playerNameTextBox.SelectAll();
+            playerNameTextBox.Focus();
         }
     }
 }

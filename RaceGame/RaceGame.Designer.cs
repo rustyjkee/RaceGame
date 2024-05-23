@@ -198,6 +198,7 @@
             buttonScores.TabIndex = 85;
             buttonScores.Text = "Show scores";
             buttonScores.UseVisualStyleBackColor = true;
+            buttonScores.Click += buttonScores_Click;
             // 
             // buttonHelp
             // 
@@ -712,6 +713,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Race";
             Load += RaceGame_Load;
+            Shown += RaceGame_Shown;
             KeyDown += RaceGame_KeyDown;
             panelGame.ResumeLayout(false);
             panelGame.PerformLayout();
