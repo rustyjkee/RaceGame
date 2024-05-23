@@ -50,10 +50,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(456, 305);
+            ClientSize = new Size(456, 605);
             Controls.Add(resultsDataGridView);
             MaximizeBox = false;
-            MaximumSize = new Size(472, 344);
+            MaximumSize = new Size(472, 644);
             MinimizeBox = false;
             MinimumSize = new Size(472, 344);
             Name = "ResultsForm";

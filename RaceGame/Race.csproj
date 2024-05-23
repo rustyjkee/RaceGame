@@ -23,6 +23,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <COMReference Include="WMPLib">
+	    <WrapperTool>tlbimp</WrapperTool>
+	    <VersionMinor>0</VersionMinor>
+	    <VersionMajor>1</VersionMajor>
+	    <Guid>6bf52a50-394a-11d3-b153-00c04f79faa6</Guid>
+	    <Lcid>0</Lcid>
+	    <Isolated>false</Isolated>
+	    <EmbedInteropTypes>true</EmbedInteropTypes>
+	  </COMReference>
+	</ItemGroup>
+
+	<ItemGroup>
 		<Resource Include="Resources\Coin.png" />
 		<Resource Include="Resources\mainCar1.png" />
 		<Resource Include="Resources\mainCar2.png" />
@@ -54,6 +66,39 @@
 	<ItemGroup>
 		<None Update="help.chm">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\buttons.png">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track01.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track02.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track03.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track04.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track05.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track06.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track07.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track08.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track09.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+		<None Update="Resources\Sounds\Track10.mp3">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 

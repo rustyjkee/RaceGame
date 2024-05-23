@@ -1,4 +1,6 @@
-﻿namespace Race
+﻿using WMPLib;
+
+namespace Race
 {
     public partial class RaceGame : Form
     {
@@ -27,6 +29,8 @@
 
         private bool playerNameTextBoxFirstClicked;
         private string playerName;
+
+        private WindowsMediaPlayer wplayer = new WindowsMediaPlayer();
 
         private void timerRoad_Tick(object sender, EventArgs e)
         {
@@ -85,7 +89,46 @@
             timerRoad.Stop();
             timerTowardCars.Stop();
             panelMenu.Show();
+
+            wplayer.currentPlaylist = GetPlaylist();
         }
+
+        private IWMPPlaylist GetPlaylist()
+        {
+            var playlist = wplayer.playlistCollection.newPlaylist("playlist");
+
+            try
+            {
+                string[] mp3Files = Directory.GetFiles("Resources/Sounds/", "*.mp3");
+                Shuffle<string>(mp3Files);
+
+                foreach (var file in mp3Files)
+                    playlist.appendItem(wplayer.newMedia(file));
+            }
+            catch
+            {
+
+            }
+            return playlist;
+        }
+
+        public void Shuffle<T>(Span<T> values)
+        {
+            int n = values.Length;
+
+            for (int i = 0; i < n - 1; i++)
+            {
+                int j = random.Next(i, n);
+
+                if (j != i)
+                {
+                    T temp = values[i];
+                    values[i] = values[j];
+                    values[j] = temp;
+                }
+            }
+        }
+
         private void RaceGame_KeyDown(object sender, KeyEventArgs e)
         {
             int sideMoveStep = 9;
@@ -316,6 +359,43 @@
         {
             playerNameTextBox.SelectAll();
             playerNameTextBox.Focus();
+
+            wplayer.controls.play();
+        }
+
+        public static Bitmap CropImage(Image source, int x, int y, int width, int height)
+        {
+            Rectangle crop = new Rectangle(x, y, width, height);
+
+            var bmp = new Bitmap(crop.Width, crop.Height);
+            using (var gr = Graphics.FromImage(bmp))
+                gr.DrawImage(source, new Rectangle(0, 0, bmp.Width, bmp.Height), crop, GraphicsUnit.Pixel);
+            return bmp;
+        }
+
+        private void playerPausePictureBox_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.pause();
+        }
+
+        private void playerStopPictureBox_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.stop();
+        }
+
+        private void playerPlayPictureBox_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.play();
+        }
+
+        private void playerNextPictureBox_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.next();
+        }
+
+        private void playerPreviousPictureBox_Click(object sender, EventArgs e)
+        {
+            wplayer.controls.previous();
         }
     }
 }

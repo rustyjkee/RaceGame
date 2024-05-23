@@ -53,6 +53,11 @@
             MenuLeftLane3 = new Label();
             MenuLeftLane2 = new Label();
             MenuLeftLane1 = new Label();
+            playerPausePictureBox = new PictureBox();
+            playerStopPictureBox = new PictureBox();
+            playerPlayPictureBox = new PictureBox();
+            playerNextPictureBox = new PictureBox();
+            playerPreviousPictureBox = new PictureBox();
             buttonExit = new Button();
             buttonResume = new Button();
             pictureFlag = new PictureBox();
@@ -86,6 +91,11 @@
             ((System.ComponentModel.ISupportInitialize)menuCar1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)menuCar3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)menuCar2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerPausePictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerStopPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerPlayPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerNextPictureBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerPreviousPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureFlag).BeginInit();
             ((System.ComponentModel.ISupportInitialize)towardCar2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)towardCar1).BeginInit();
@@ -169,6 +179,11 @@
             panelMenu.Controls.Add(MenuLeftLane3);
             panelMenu.Controls.Add(MenuLeftLane2);
             panelMenu.Controls.Add(MenuLeftLane1);
+            panelMenu.Controls.Add(playerPausePictureBox);
+            panelMenu.Controls.Add(playerStopPictureBox);
+            panelMenu.Controls.Add(playerPlayPictureBox);
+            panelMenu.Controls.Add(playerNextPictureBox);
+            panelMenu.Controls.Add(playerPreviousPictureBox);
             panelMenu.Location = new Point(0, 0);
             panelMenu.Margin = new Padding(4);
             panelMenu.Name = "panelMenu";
@@ -394,6 +409,60 @@
             MenuLeftLane1.Size = new Size(18, 104);
             MenuLeftLane1.TabIndex = 69;
             MenuLeftLane1.TextAlign = ContentAlignment.TopCenter;
+            // 
+            // playerPreviousPictureBox
+            // 
+            playerPreviousPictureBox.Image = CropImage(Image.FromFile("Resources/buttons.png"), 1536, 0, 384, 375);
+            playerPreviousPictureBox.Location = new Point(120, 600);
+            playerPreviousPictureBox.Name = "playerPreviousPictureBox";
+            playerPreviousPictureBox.Size = new Size(30, 30);
+            playerPreviousPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerPreviousPictureBox.TabIndex = 90;
+            playerPreviousPictureBox.TabStop = false;
+            // 
+            // playerPausePictureBox
+            // 
+            playerPausePictureBox.Image = CropImage(Image.FromFile("Resources/buttons.png"), 0, 0, 384, 375);
+            playerPausePictureBox.Location = new Point(155, 600);
+            playerPausePictureBox.Name = "playerPausePictureBox";
+            playerPausePictureBox.Size = new Size(30, 30);
+            playerPausePictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerPausePictureBox.TabIndex = 86;
+            playerPausePictureBox.TabStop = false;
+            playerPausePictureBox.Click += playerPausePictureBox_Click;
+            // 
+            // playerStopPictureBox
+            // 
+            playerStopPictureBox.Image = CropImage(Image.FromFile("Resources/buttons.png"), 384, 0, 384, 375);
+            playerStopPictureBox.Location = new Point(190, 600);
+            playerStopPictureBox.Name = "playerStopPictureBox";
+            playerStopPictureBox.Size = new Size(30, 30);
+            playerStopPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerStopPictureBox.TabIndex = 87;
+            playerStopPictureBox.TabStop = false;
+            playerStopPictureBox.Click += playerStopPictureBox_Click;
+            // 
+            // playerPlayPictureBox
+            // 
+            playerPlayPictureBox.Image = CropImage(Image.FromFile("Resources/buttons.png"), 768, 0, 384, 375);
+            playerPlayPictureBox.Location = new Point(225, 600);
+            playerPlayPictureBox.Name = "playerPlayPictureBox";
+            playerPlayPictureBox.Size = new Size(30, 30);
+            playerPlayPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerPlayPictureBox.TabIndex = 88;
+            playerPlayPictureBox.TabStop = false;
+            playerPlayPictureBox.Click += playerPlayPictureBox_Click;
+            // 
+            // playerNextPictureBox
+            // 
+            playerNextPictureBox.Image = CropImage(Image.FromFile("Resources/buttons.png"), 1152, 0, 384, 375);
+            playerNextPictureBox.Location = new Point(260, 600);
+            playerNextPictureBox.Name = "playerNextPictureBox";
+            playerNextPictureBox.Size = new Size(30, 30);
+            playerNextPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerNextPictureBox.TabIndex = 89;
+            playerNextPictureBox.TabStop = false;
+            playerNextPictureBox.Click += playerNextPictureBox_Click;
             // 
             // buttonExit
             // 
@@ -724,6 +793,11 @@
             ((System.ComponentModel.ISupportInitialize)menuCar1).EndInit();
             ((System.ComponentModel.ISupportInitialize)menuCar3).EndInit();
             ((System.ComponentModel.ISupportInitialize)menuCar2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerPausePictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerStopPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerPlayPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerNextPictureBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerPreviousPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureFlag).EndInit();
             ((System.ComponentModel.ISupportInitialize)towardCar2).EndInit();
             ((System.ComponentModel.ISupportInitialize)towardCar1).EndInit();
@@ -786,5 +860,10 @@
         private Label MenuLeftLane1;
         private TextBox playerNameTextBox;
         private Button buttonScores;
+        private PictureBox playerPausePictureBox;
+        private PictureBox playerStopPictureBox;
+        private PictureBox playerPlayPictureBox;
+        private PictureBox playerNextPictureBox;
+        private PictureBox playerPreviousPictureBox;
     }
 }
